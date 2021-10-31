@@ -13,17 +13,6 @@ import java.util.Optional;
 @RequestMapping(value = "/api/pedidos")
 public class PedidoController {
 
-    @GetMapping(value = "/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public ProdutoResponse consultar(@PathVariable Long id) {
 
-        Optional<Pedido> pedidoOptional = produtoRepository.findById(id);
-
-        if (produtoOptional.isPresent()) {
-            return ProdutoResponse.toResponse(produtoOptional.get());
-        }
-
-        throw new ErrorApiException(HttpStatus.NOT_FOUND, "Produto não encontrado");
-    }
 
 }
