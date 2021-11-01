@@ -45,4 +45,12 @@ public class Pedido {
         this.statusPedido = statusPedido;
         this.usuario = usuario;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Double getValor_total() {
+        return valor_total;
+    }
 }

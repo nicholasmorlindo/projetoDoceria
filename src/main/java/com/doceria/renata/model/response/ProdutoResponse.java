@@ -16,9 +16,7 @@ public class ProdutoResponse {
         this.imagem = imagem;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public String getNome() {
         return nome;
