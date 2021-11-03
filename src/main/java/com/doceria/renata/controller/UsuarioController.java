@@ -28,6 +28,11 @@ public class UsuarioController {
         return usuarioService.getUsuarios();        
     }
 
+    @GetMapping(value = "/estaLogado")
+    public Boolean estaLogado(@RequestBody @Valid UsuarioRequest usuarioRequest) {
+        return usuarioService.estaLogado(usuarioRequest);
+    }
+
     @PostMapping(value = "/cadastrar")
     public ResponseEntity<Void> insert(@RequestBody @Valid UsuarioRequest usuarioRequest){
         return usuarioService.insert(usuarioRequest);

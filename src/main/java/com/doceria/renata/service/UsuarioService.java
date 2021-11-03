@@ -31,12 +31,31 @@ public class UsuarioService {
     @Autowired
     public UsuarioRepository usuarioRepository;
 
-    public List<Usuario> getUsuarios()
-    {
+    public List<Usuario> getUsuarios() {
         List<Usuario> ls = new ArrayList<>();
         Iterable<Usuario> usuarios = usuarioRepository.findAll();
         usuarios.forEach(ls::add);
         return ls;
+    }
+
+    public Boolean estaLogado(UsuarioRequest usuarioRequest) {
+        Optional<Usuario> usuarioOptional = Optional.empty();
+        Iterable<Usuario> usuarios = usuarioRepository.findAll();
+
+        for(Usuario u : usuarios)
+        {
+            if(u.getEmail().equals(usuarioRequest.getEmail())) {
+                usuarioOptional = Optional.of(u);
+                break;
+            }
+        }
+
+        if(usuarioOptional.isEmpty())
+        {
+            return false;
+        }
+
+        return validarToken(usuarioOptional.get());
     }
 
     public ResponseEntity<Void> insert(UsuarioRequest usuarioRequest) {
