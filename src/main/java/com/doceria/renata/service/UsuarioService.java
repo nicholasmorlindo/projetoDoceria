@@ -58,8 +58,7 @@ public class UsuarioService {
         return validarToken(usuarioOptional.get());
     }
 
-    public ResponseEntity<Void> insert(UsuarioRequest usuarioRequest) {
-        Usuario usuario = usuarioRequest.toModel();
+    public ResponseEntity<Void> insert(Usuario usuario) {
         usuarioRepository.save(usuario);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(usuario.getId()).toUri();

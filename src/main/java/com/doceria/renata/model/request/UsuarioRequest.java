@@ -8,12 +8,6 @@ import javax.validation.constraints.NotEmpty;
 
 public class UsuarioRequest {
 
-    @NotEmpty
-    private String nome;
-
-    @NotEmpty
-    private String sobrenome;
-
     @Email @NotEmpty
     private String email;
 
@@ -23,30 +17,9 @@ public class UsuarioRequest {
     public UsuarioRequest(){
     }
 
-    public UsuarioRequest(String nome, String sobrenome, String email, String senha) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
+    public UsuarioRequest(String email, String senha) {
         this.email = email;
         this.senha = senha;
-    }
-
-    public Usuario toModel()
-    {
-        return new Usuario(
-            this.nome,
-            this.sobrenome,
-            this.email,
-            this.senha,
-            ""
-        );
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
     }
 
     public String getEmail() {

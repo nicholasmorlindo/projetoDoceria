@@ -34,7 +34,7 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/cadastrar")
-    public ResponseEntity<Void> insert(@RequestBody @Valid UsuarioRequest usuarioRequest){
+    public ResponseEntity<Void> insert(@RequestBody @Valid Usuario usuarioRequest){
         return usuarioService.insert(usuarioRequest);
     }
 
