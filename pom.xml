@@ -63,7 +63,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -74,8 +73,6 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-=======
->>>>>>> 5e5d6ffc00702b2b8fdce471f2bfc958e27d22f0
 	</dependencies>
 
 	<build>
