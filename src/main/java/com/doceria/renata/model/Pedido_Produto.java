@@ -1,7 +1,6 @@
 package com.doceria.renata.model;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -11,7 +10,8 @@ public class Pedido_Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "pedido_id", insertable = false, updatable = false)
     private Pedido pedido;
 
     @OneToOne
@@ -21,15 +21,14 @@ public class Pedido_Produto {
     private Integer quantidade;
 
     @NotNull
-    private Double valor_unitario;
+    private Double valor;
 
     public Pedido_Produto(){}
 
-    public Pedido_Produto(Pedido pedido, Produto produto, Integer quantidade, Double valor_unitario) {
-        this.pedido = pedido;
+    public Pedido_Produto(Produto produto, Integer quantidade, Double valor_unitario) {
         this.produto = produto;
         this.quantidade = quantidade;
-        this.valor_unitario = valor_unitario;
+        this.valor = valor_unitario;
     }
 
     public Long getId() {
@@ -48,7 +47,19 @@ public class Pedido_Produto {
         return quantidade;
     }
 
-    public Double getValor_unitario() {
-        return valor_unitario;
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 }

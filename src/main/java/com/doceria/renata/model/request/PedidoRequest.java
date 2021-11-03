@@ -9,47 +9,45 @@ import java.util.List;
 
 public class PedidoRequest {
 
-
-    TipoEntrega tipoEntrega;
-
-    Endereco endereco;
-
-    Pagamento pagamento;
-
-    StatusPedido statusPedido;
-
-    Usuario usuario;
-
-    Double valor_total;
-
-    List<Pedido_Produto> pedido_produto = new ArrayList<>();
+    private TipoEntrega tipoEntrega;
+    private Endereco endereco;
+    private Pagamento pagamento;
+    private Long usuario;
 
     public PedidoRequest(
         TipoEntrega tipoEntrega,
         Endereco endereco,
         Pagamento pagamento,
-        StatusPedido statusPedido,
-        Usuario usuario,
-        Double valor_total,
-        List<Pedido_Produto> pedido_produto
-
+        Long usuario
     ) {
         this.tipoEntrega = tipoEntrega;
         this.endereco = endereco;
         this.pagamento = pagamento;
-        this.statusPedido =statusPedido;
         this.usuario = usuario;
-        this.valor_total = valor_total;
-        this.pedido_produto = pedido_produto;
     }
 
-    public Pedido toModel(){
+    public Pedido toModel(Usuario usuario){
         return new Pedido(
             this.tipoEntrega,
             this.endereco,
             this.pagamento,
-            this.statusPedido,
-            this.usuario
+            usuario
         );
+    }
+
+    public TipoEntrega getTipoEntrega() {
+        return tipoEntrega;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public Long getUsuario() {
+        return usuario;
     }
 }
