@@ -43,6 +43,10 @@ public class PedidoService {
             throw new ErrorApiException(HttpStatus.NOT_FOUND, "Carrinho vazio");
         }
 
+        if (!UsuarioService.validarToken(usuarioOptional.get())) {
+            throw new ErrorApiException(HttpStatus.UNAUTHORIZED, "Login Expirou");
+        }
+
         Pedido pedido = pedidoRequest.toModel(usuarioOptional.get());
 
         carrinhoOptional.forEach(x -> {

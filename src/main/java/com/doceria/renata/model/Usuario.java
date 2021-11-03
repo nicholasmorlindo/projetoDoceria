@@ -23,14 +23,17 @@ public class Usuario {
     @NotEmpty
     private String senha;
 
+    private String token = "";
+
     public Usuario(){
     }
 
-    public Usuario(String nome, String sobrenome, String email, String senha) {
+    public Usuario(String nome, String sobrenome, String email, String senha, String token) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
         this.senha = senha;
+        this.token = token;
     }
 
     public Long getId() {
@@ -51,5 +54,19 @@ public class Usuario {
 
     public String getSenha() {
         return senha;
+    }
+    
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Usuario: " + this.nome + " " + this.sobrenome + " - " + this.email + " Senha: " + this.senha + " Token: " + this.token;
     }
 }

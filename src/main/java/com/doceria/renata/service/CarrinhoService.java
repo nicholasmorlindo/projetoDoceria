@@ -37,6 +37,10 @@ public class CarrinhoService {
             throw new ErrorApiException(HttpStatus.NOT_FOUND, "Produto nao encontrado ou usuario nao encontrados");
         }
 
+        if (!UsuarioService.validarToken(usuarioOptional.get())) {
+            throw new ErrorApiException(HttpStatus.UNAUTHORIZED, "Login Expirou");
+        }
+
         Carrinho carrinho = carrinhoRequest.toModel(produtoOptional.get(), usuarioOptional.get());
         carrinho.setValor(produtoOptional.get().getValor());
         carrinhoRepository.save(carrinho);
